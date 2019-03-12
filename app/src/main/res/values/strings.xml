@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">WiFiAnalyzer</string>
+    <string name="buttonText">START</string>
+</resources>
