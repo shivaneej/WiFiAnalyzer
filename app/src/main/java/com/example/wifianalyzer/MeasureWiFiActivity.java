@@ -6,6 +6,7 @@ import android.net.NetworkInfo;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,8 +15,13 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class MeasureWiFiActivity extends AppCompatActivity {
@@ -47,8 +53,29 @@ public class MeasureWiFiActivity extends AppCompatActivity {
                     output = new String("RSSI: " + rssi + " dBm\nSSID: " + ssid + "\nBSSID: " + bssid + "\nLink Speed: " + speed + " Mbps"+"\nFrequency: "+freq+" MHz");
                     TextView textView = findViewById(R.id.textView);
                     textView.setText(output);
-//                    fileop = new String("\n"+rssi+"\t"+ssid+"\t"+speed);
-//                    writeToFile(fileop);
+                    File dir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), "WifiAnalyzer");
+                    dir.mkdirs();
+                    try {
+                        Date currentTime = Calendar.getInstance().getTime();
+                        SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss a");
+                        String formattedDate = df.format(currentTime);
+                        File myFile = new File(dir, "Log.txt");
+                        if (myFile.length() < 1024000) {
+                            FileWriter fw = new FileWriter(myFile, true);
+                            BufferedWriter bw = new BufferedWriter(fw);
+                            PrintWriter pw = new PrintWriter(bw);
+                            String printString = formattedDate + "\t" + ssid + "\t" + rssi+" dBm\t"+speed+" Mbps\n";
+                            pw.print(printString);
+                            pw.close();
+                        }else{
+                            PrintWriter pw = new PrintWriter(myFile);
+                            pw.print("");
+                            pw.close();
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
                 }
                 else {
                     output = "Please connect your device to a WiFi Network.";
@@ -64,15 +91,5 @@ public class MeasureWiFiActivity extends AppCompatActivity {
 
         }
     }
-//    public void writeToFile(String op)
-//    {
-//        String file = "output.txt";
-//        try
-//        {
-//            BufferedWriter b = new BufferedWriter(new FileWriter(file));
-//            b.write(op);
-//            b.close();
-//        }
-//        catch (IOException e){e.printStackTrace();}
-//    }
 }
+
