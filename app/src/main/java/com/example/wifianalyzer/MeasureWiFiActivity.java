@@ -77,19 +77,18 @@ public class MeasureWiFiActivity extends AppCompatActivity {
                     }
 
                 }
-                else {
-                    output = "Please connect your device to a WiFi Network.";
-                    TextView textView = findViewById(R.id.textView);
-                    textView.setText(output);
-                }
-            final Button button = (Button) findViewById(R.id.button2);
-            button.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-                    finish();
-                }
-            });
-
         }
+        else {
+            output = "Please connect your device to a WiFi Network.";
+            TextView textView = findViewById(R.id.textView);
+            textView.setText(output);
+        }
+        final Button button = (Button) findViewById(R.id.button2);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 }
 
