@@ -4,3 +4,8 @@
 </div>
 
 An android app which displays WiFi Signal Strength when connected.
+
+## Features
+* Displays SSID, RSSI, BSSID, Link Speed and Frequency
+* Saves data to external file
+
