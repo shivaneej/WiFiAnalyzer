@@ -9,3 +9,9 @@ An android app which displays WiFi Signal Strength when connected using Android 
 * Displays SSID, RSSI, BSSID, Link Speed and Frequency
 * Saves data to external file
 
+## Permissions Required
+* Location (Android 8 and above)
+* Storage
+
+## Demo
+<img src="demo.gif" width="250px">
