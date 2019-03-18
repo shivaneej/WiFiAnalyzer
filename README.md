@@ -14,4 +14,6 @@ An android app which displays WiFi Signal Strength when connected using Android 
 * Storage
 
 ## Demo
-<img src="demo.gif" width="250px">
+<div align="center">
+  <img src="demo.gif" width="250px">
+</div>
