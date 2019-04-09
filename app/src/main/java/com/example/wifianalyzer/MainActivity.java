@@ -17,4 +17,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MeasureWiFiActivity.class);
         startActivity(intent);
     }
+    public void readFile(View view)
+    {
+        Intent intent = new Intent(this, ReadFileActivity.class);
+        startActivity(intent);
+    }
 }

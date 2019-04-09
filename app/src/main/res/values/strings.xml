@@ -2,4 +2,6 @@
     <string name="app_name">WiFiAnalyzer</string>
     <string name="buttonText">START</string>
     <string name="stopBtn">STOP</string>
+    <string name="readFileBtn">VIEW LOG</string>
+    <string name="LogTitle">Log File</string>
 </resources>
